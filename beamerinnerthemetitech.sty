@@ -47,7 +47,7 @@
   \begin{tikzpicture}[remember picture,overlay]%
     \node[xshift={\paperwidth/2-(\paperwidth-\textwidth)/2},yshift=-1.5cm]{
       \ifx\titechnoimg\undefined
-      \includegraphics[width=\paperwidth]{img/sakura.png}
+      \includegraphics[width=\paperwidth]{img/autumn.jpeg}%{img/sakura.png}
       \else
       \input{img/sakura.tex}
       \fi
@@ -80,13 +80,13 @@
       };%
     \end{tikzpicture}%
     \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
-    \vfill%
+    %\vfill%
     \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
     \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
     \usebeamertemplate*{title separator}
     \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+	\ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi 
     \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
-    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
     \vfill
     \vspace*{1mm}
   \end{minipage}
@@ -119,7 +119,7 @@
   \raggedright%
   \insertsubtitle%
   \par%
-  \vspace*{0.5em}
+  %\vspace*{0.5em}
 }
 \newlength{\titech@titleseparator@linewidth}
 \setlength{\titech@titleseparator@linewidth}{0.4pt}

@@ -36,6 +36,13 @@
 \definecolor{mDarkRed}   {HTML}{CC0016}
 \definecolor{mDarkBlue}  {HTML}{092148}
 \definecolor{mLightBlue} {HTML}{19577C}
+
+%Comlementary pallete
+\definecolor{mDarkYellowComp}{HTML}{6B8DEF}
+%Analogous
+\definecolor{mLightGreen}{HTML}{BCDC77}
+\definecolor{mGray}		 {HTML}{EFECE3}
+
 \newcommand{\titech@colors@light}{
   \setbeamercolor{normal text}{%
     fg=black,
@@ -43,21 +50,23 @@
   }
 }
 \setbeamercolor{alerted text}{%
-  fg=mDarkRed
+  fg=mLightGreen
 }
 \setbeamercolor{example text}{%
-  fg=mLightBlue
+  fg=mDarkYellowComp
 }
-\setbeamercolor{titlelike}{use=normal text, parent=normal text}
-\setbeamercolor{author}{use=normal text, parent=normal text}
-\setbeamercolor{date}{use=normal text, parent=normal text}
-\setbeamercolor{institute}{use=normal text, parent=normal text}
-\setbeamercolor{structure}{use=normal text, fg=normal text.fg}
 \setbeamercolor{palette primary}{%
   use=normal text,
   fg=normal text.bg,
   bg=mDarkYellow
 }
+\setbeamercolor{titlelike}{use=normal text, parent=normal text}
+\setbeamercolor{author}{use=normal text, parent=normal text}
+\setbeamercolor{date}{use=normal text, parent=normal text}
+\setbeamercolor{subtitle}{use=normal text, parent=normal text}
+\setbeamercolor{institute}{use=normal text, parent=normal text}
+\setbeamercolor{structure}{use=normal text, fg=normal text.fg}
+
 \setbeamercolor{frametitle}{%
   use=normal text
 }
@@ -108,13 +117,15 @@
     bg=block title.bg,
     fg=alerted text.fg
 }
+
 \setbeamercolor{block title example}{%
     use={block title, example text},
     bg=block title.bg,
     fg=example text.fg
 }
-\setbeamercolor{block body alerted}{use=block body, parent=block body}
-\setbeamercolor{block body example}{use=block body, parent=block body}
+
+\setbeamercolor{block body alerted}{bg=mGray}
+\setbeamercolor{block body example}{bg=mGray}
 \setbeamercolor{footnote}{fg=normal text.fg!90}
 \setbeamercolor{footnote mark}{fg=.}
 \setbeamercolor{headline}{fg=normal text.bg, bg=mDarkYellow}

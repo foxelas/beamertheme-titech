@@ -1,0 +1,270 @@
+\documentclass{beamer}
+\usetheme{titech}
+
+\usepackage{enumitem}
+\setitemize{label=\usebeamerfont*{itemize item}%
+  \usebeamercolor[fg]{itemize item}
+  \usebeamertemplate{itemize item}}
+  
+\graphicspath{{img/}, {add_img/}} %Setting the graphicspath 
+\usepackage{amsmath}
+\usepackage{mathtools}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\usepackage[square, sort&compress, numbers]{natbib}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{comment}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{datenumber}
+\usepackage{xifthen}
+\usepackage{ifthen}
+% counters for calculating with dates
+\newcounter{startdate}
+\newcounter{enddate}
+\newcounter{tempdate}
+\newcounter{dateone}
+\newcounter{datetwo}
+
+% 
+\newcommand{\startenddiff}[6]{%
+\setmydatenumber{startdate}{#1}{#2}{#3}%
+\setmydatenumber{enddate}{#4}{#5}{#6}%
+\setmydatenumber{tempdate}{#4}{#5}{#6}%
+\addtocounter{tempdate}{-\thestartdate}%
+}
+
+%
+\newcommand{\datediff}[6]%
+{   \setmydatenumber{dateone}{#1}{#2}{#3}
+    \setmydatenumber{datetwo}{#4}{#5}{#6}
+    \addtocounter{dateone}{-\thestartdate}
+    \addtocounter{datetwo}{-\thestartdate}
+}
+
+%
+\newcommand{\drawtimeline}%
+{   \setdatebynumber{\thestartdate}
+    \pgfmathtruncatemacro{\numberofdays}{\thetempdate}
+    \pgfmathsetmacro{\daywidth}{\timelinewidth/\numberofdays}
+    \draw[-stealth] (0,0) -- (\timelinewidth,0) -- ++(0.3,0);
+    \foreach \x in {0,...,\numberofdays}
+    { \ifthenelse{\thedateday = 1}
+        { \ifcase\thedatemonth
+            \or \xdef\monthname{Jan}
+            \or \xdef\monthname{Feb}
+            \or \xdef\monthname{Mar}
+            \or \xdef\monthname{Apr}
+            \or \xdef\monthname{May}
+            \or \xdef\monthname{Jun}
+            \or \xdef\monthname{Jul}
+            \or \xdef\monthname{Aug}
+            \or \xdef\monthname{Sep}
+            \or \xdef\monthname{Oct}
+            \or \xdef\monthname{Nov}
+            \or \xdef\monthname{Dec}    
+            \else       
+            \fi
+            \draw (\x*\daywidth,0) -- (\x*\daywidth,0.25) node[right,rotate=90,font=\tiny]{}; %{\monthname\ \thedateyear};%
+        }{}
+        \ifthenelse{\equal{\datedayname}{Monday}}
+        { \draw (\x*\daywidth,0) -- (\x*\daywidth,-0.05);
+        }{}
+        \addtocounter{datenumber}{1}
+        \setdatebynumber{\thedatenumber}
+    }
+}
+
+\newcommand{\timeentry}[8][gray]% [options] start date, end date, description
+{ \datediff{#2}{#3}{#4}{#5}{#6}{#7}
+    \pgfmathtruncatemacro{\numberofdays}{\thetempdate}
+    \pgfmathsetmacro{\daywidth}{\timelinewidth/\numberofdays}
+    \draw[opacity=1,line width=1.5mm,line cap=round,#1] (\thedateone*\daywidth,0) -- (\thedatetwo*\daywidth,0) node[left,rotate=60,pos=0.5] {#8};
+}
+
+
+%----------------------------------------------------------------------------------------
+%	 TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\title{Title \\ Title}
+\subtitle{ \textcolor{mDarkYellow} {Research Planning}}
+\author{Aloupogianni Eleni}
+\institute{Tokyo Institute of Technology | Obi Laboratory}
+\date{{\scriptsize \today}}
+
+
+%------------------------------------------------
+
+\begin{document}
+
+%------------------------------------------------
+
+\begin{frame}[noframenumbering,plain]
+	\maketitle % Automatically created using the information in the commands above
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	 Contents 
+%----------------------------------------------------------------------------------------
+\begin{frame}{Contents}
+   \tableofcontents
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	 SECTION 1
+%----------------------------------------------------------------------------------------
+
+{\AtBeginSection{}
+\section{Main} % Section title slide, unnumbered
+}
+\begin{frame}{Background}
+
+\begin{tabular}{cl}  
+\begin{tabular}{c}
+%\begin{figure}
+\centering \includegraphics[width=0.3\textwidth]{example-image-a}
+%\caption{Example of positive margin determination}\label{fig:1}
+%\end{figure}
+\end{tabular}
+& \begin{tabular}{l}
+\parbox{0.5\linewidth}{%  change the parbox width as appropiate
+ \textbf{a}: aa 
+ \begin{itemize}
+ \item Example of positive margin determination
+ \item Example of positive margin determination
+ \item Example of positive margin determination
+ \end{itemize}
+    }
+\end{tabular}  \\
+\end{tabular}
+
+
+\begin{exampleblock}{s}
+asdasdasd
+\end{exampleblock}
+
+as \textcolor{mDarkYellowComp}{as } retert
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Hypothesis \& Purpose}
+
+\begin{itemize}
+\item Example of positive margin determination \textcolor{mDarkYellowComp}{spectral absorbance and reflectance}
+\item SExample of positive margin determination \textcolor{mDarkYellowComp}{skin chromophores}. 
+ 
+\end{itemize}
+
+
+\begin{alertblock}{Hypothesis}
+Example of positive margin determination
+\end{alertblock}
+
+\begin{exampleblock}{Purpose}
+Example of positive margin determination
+\end{exampleblock}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Materials \& Methods}
+   
+  
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Current Progress}
+
+
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.3\textwidth}
+  \centering
+	\includegraphics[width=\textwidth]{example-image-a}
+	%\caption{Melanin distribution map.}
+\end{subfigure} %
+\begin{subfigure}{0.3\textwidth}
+  \centering
+	\includegraphics[width=\textwidth]{example-image-a}
+	%\caption{Close-up of hemoglobin distribution map.}
+\end{subfigure}
+\caption{ssdsdsd.}
+\end{figure}
+
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Research Schedule}
+
+% ===== user's choices =========================
+\startenddiff{2020}{09}{29}{2022}{09}{29}
+\pgfmathsetmacro{\timelinewidth}{10}% will be 0.3cm wider for arrow tip
+% ==============================================
+\begin{tikzpicture}
+    \drawtimeline
+
+    \timeentry[mDarkYellow]{2020}{10}{28}{2020}{11}{05}{Oct'20}
+    \timeentry[mDarkYellow]{2021}{02}{10}{2021}{02}{20}{Feb'21}
+    \timeentry[mDarkYellow]{2021}{08}{10}{2021}{08}{20}{Aug'21}
+    \timeentry[mDarkYellow]{2021}{11}{10}{2021}{11}{20}{Nov'21}
+    \timeentry[mDarkYellow]{2021}{12}{10}{2021}{12}{20}{Dec'21}
+    \timeentry[mDarkYellow]{2022}{03}{10}{2022}{03}{20}{Mar'22}
+    \timeentry[mDarkYellow]{2022}{04}{10}{2022}{04}{20}{Apr'22}
+    \timeentry[mDarkYellow]{2022}{06}{10}{2022}{06}{20}{Jun'22}
+
+\end{tikzpicture}
+
+\begin{itemize}
+\item<1> October 2020: Test run experimental set-up 
+\item<1> February 2021: Create base analysis process 
+\item<1> August 2021: Finish collecting first batch of image data
+\item<1> November 2021: Calibrate algorithmic prototype
+\item<1> December 2021: Adjust with feedback from doctors
+\item<1> March 2022: Finish collecting second batch of image data
+\item<1> April 2022: Adjust to complete dataset
+\item<1> June 2022: Compile dissertation thesis 
+\end{itemize}
+
+\end{frame}
+
+\section{Q \& A}
+%------------------------------------------------
+
+\begin{frame}{Equipment}
+\href{https://www.erere.co.jp/}{link1}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	Thank you for your attention!
+    \newline
+    \textcolor{mDarkYellow}{Any questions?}
+\end{frame}
+
+%------------------------------------------------
+
+% \appendix
+
+\begin{frame}[allowframebreaks]{Bibliography}
+\begin{tiny}
+   \nocite{*}
+    \bibliography{bibliography}
+    \bibliographystyle{unsrtnat}
+\end{tiny}
+\end{frame}
+
+
+\end{document}
